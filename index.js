@@ -1,0 +1,25 @@
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+  extends: ['@react-native-community', 'prettier'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'sort-keys-fix'],
+  rules: {
+    '@typescript-eslint/no-shadow': 'error',
+    'prettier/prettier': 'error',
+    'react/no-children-prop': 'error',
+    'react/prop-types': 'off',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'sort-keys-fix/sort-keys-fix': 'warn',
+    semi: 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'no-console': ['error', { allow: ['warn'] }],
+    'sort-imports': 'off',
+    'import/order': 'off',
+    'no-shadow': 'off',
+  },
+}
