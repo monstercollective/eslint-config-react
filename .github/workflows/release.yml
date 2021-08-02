@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: git config
+        run: git config user.name "${GITHUB_ACTOR}" && git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+          registry-url: https://npm.pkg.github.com/
           scope: "@monstercollective"
       - run: yarn policies set-version 1.22.4
       - run: yarn --frozen-lockfile
       - run: yarn release --ci
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
