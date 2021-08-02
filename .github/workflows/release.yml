@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          scope: "@monstercollective"
+      - run: yarn policies set-version 1.22.4
+      - run: yarn --frozen-lockfile
+      - run: yarn release --ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
