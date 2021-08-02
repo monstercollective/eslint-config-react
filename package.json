@@ -9,7 +9,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "release": "yarn release-it"
+    "release": "DEBUG=release-it:* yarn release-it"
   },
   "peerDependencies": {
     "eslint": "^7.32.0",
